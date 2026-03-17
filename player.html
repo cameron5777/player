@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+  margin: 0;
+  background: black;
+  overflow: hidden;
+}
+
+#loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: white;
+  font-size: 18px;
+  font-family: Arial;
+}
+
+iframe {
+  border: none;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+</head>
+
+<body>
+
+<div id="loader">Loading Player...</div>
+
+<iframe id="player"
+allow="autoplay; fullscreen"
+allowfullscreen>
+</iframe>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const movieId = params.get("id");
+
+const id = movieId ? movieId : "tt3832914";
+
+document.getElementById("player").src =
+`https://vidfast.pro/movie/${id}?autoPlay=true`;
+
+document.getElementById("player").onload = () => {
+  document.getElementById("loader").style.display = "none";
+};
+</script>
+
+</body>
+</html>
